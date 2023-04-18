@@ -2,6 +2,7 @@ package com.example.bookapi.features.book;
 
 import android.util.Log;
 import androidx.annotation.NonNull;
+
 import com.example.bookapi.features.book.helper.BookPojo;
 import java.util.List;
 import retrofit2.Call;
@@ -18,12 +19,12 @@ public class BookPresenter implements BookContract.Presenter {
     }
 
     @Override
-    public void setBooks(int id) {
-        bookModel.getBooks(id).enqueue(new Callback<List<BookPojo>>() {
+    public void setBooks() {
+        bookModel.getBooks().enqueue(new Callback<List<BookPojo>>() {
             @Override
             public void onResponse(@NonNull Call<List<BookPojo>> call, @NonNull Response<List<BookPojo>> response) {
                 if (response.isSuccessful()) {
-                    mView.setBook(response.body());
+                    mView.setBooks(response.body());
                     mView.successMessage("Api call Success.");
                 } else {
                     mView.errorMessage("Api call BookPojo is error.");

@@ -2,18 +2,15 @@ package com.example.bookapi.features.book;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.bookapi.R;
-import com.example.bookapi.features.book.helper.AuthorsItem;
 import com.example.bookapi.features.book.helper.BookPojo;
+import com.example.bookapi.features.book.helper.BooksItem;
 
 import java.util.List;
 
@@ -36,23 +33,26 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
-        BookPojo book = bookPojoList.get(position);
-        holder.tvTitle.setText(book.getTitle());
-        // Get the author list from the BooksPojo object at the given position
-        List<AuthorsItem> authorsItemList = bookPojoList.get(position).getAuthors();
-        StringBuilder listOfAuther = new StringBuilder();
-        for (int i = 0; i < authorsItemList.size(); i++) {
-            listOfAuther.append(authorsItemList.get(i).getName());
-            if (i != authorsItemList.size() - 1) {
-                listOfAuther.append(", ");
-            }
-        }
 
-        Log.d("BookPojo","Error"+listOfAuther);
-        System.out.println("Auther name From API:"+listOfAuther);
-        // Set the final author names string to the authorTextView
-        holder.tvAuther.setText(listOfAuther.toString());
-        holder.tvDownloadCount.setText(book.getDownloadCount()+" ");
+//        BookPojo book = bookPojoList.get(position);
+//        holder.tvTitle.setText(book.getTitle());
+//        // Get the author list from the BooksPojo object at the given position
+//        List<AuthorsItem> authorsItemList = bookPojoList.get(position).getAuthors();
+//        StringBuilder listOfAuther = new StringBuilder();
+//        for (int i = 0; i < authorsItemList.size(); i++) {
+//            listOfAuther.append(authorsItemList.get(i).getName());
+//            if (i != authorsItemList.size() - 1) {
+//                listOfAuther.append(", ");
+//            }
+//        }
+
+        BooksItem booksItem = new BooksItem();
+        holder.tvAuther.setText(booksItem.getAuthor());
+        holder.tvId.setText(booksItem.getId());
+        holder.tvPrices.setText(booksItem.getRating()+" ");
+        holder.tvTitle.setText(booksItem.getTitle());
+        holder.tvDownloadUrl.setText(booksItem.getUrl());
+
     }
 
     @Override
@@ -61,14 +61,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle;
+
         TextView tvAuther;
-        TextView tvDownloadCount;
+        TextView tvId;
+        TextView tvPrices;
+        TextView tvTitle;
+        TextView tvDownloadUrl;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.title_text_view);
             tvAuther = itemView.findViewById(R.id.author_text_view);
-            tvDownloadCount = itemView.findViewById(R.id.downloadCount_text_view);
+            tvId = itemView.findViewById(R.id.id_text_view);
+            tvPrices = itemView.findViewById(R.id.prices_text_view);
+            tvTitle = itemView.findViewById(R.id.title_text_view);
+            tvDownloadUrl = itemView.findViewById(R.id.downloadUrl_text_view);
         }
     }
 }

@@ -9,7 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiCallInstance {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://project-gutenberg-api.p.rapidapi.com/";
+
+    private static final String BASE_URL = "https://book4.p.rapidapi.com/";
+
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -49,4 +51,10 @@ public class ApiCallInstance {
 //        }
 //        return retrofit;
 //    }
+
+
+
+//    private static final String BASE_URL = "https://book-finder1.p.rapidapi.com/";
+//    https://book-finder1.p.rapidapi.com/api/search?series=Wings%20of%20fire&book_type=Fiction&lexile_min=600&lexile_max=800&results_per_page=25&page=1
+//    private static final String BASE_URL = "https://project-gutenberg-api.p.rapidapi.com/";
 }

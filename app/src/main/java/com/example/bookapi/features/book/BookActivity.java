@@ -9,18 +9,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.bookapi.R;
-import com.example.bookapi.features.book.helper.AuthorsItem;
 import com.example.bookapi.features.book.helper.BookPojo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookActivity extends AppCompatActivity implements BookContract.View {
 
-    List<BookPojo> bookPojoList;
     RecyclerView recyclerView;
-//    EditText editText;
-//    Button btnSearch;
-    private List<BookPojo> body;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,10 +23,8 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        AuthorsItem authorsItem = new AuthorsItem();
-        ArrayList<AuthorsItem> arr = new ArrayList<>();
         BookPresenter bookPresenter = new BookPresenter(this);
-        bookPresenter.setBooks(15);
+        bookPresenter.setBooks();
 
     }
 
@@ -48,7 +41,7 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void setBook(List<BookPojo> body) {
+    public void setBooks(List<BookPojo> body) {
         recyclerView = findViewById(R.id.rvBooks);
         BookAdapter thisAdapter = new BookAdapter(BookActivity.this, body);
         recyclerView.setAdapter(thisAdapter);
@@ -56,6 +49,8 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
         recyclerView.setLayoutManager(layoutManager);
         thisAdapter.notifyDataSetChanged();
     }
+
+
 
 
 //    @Override

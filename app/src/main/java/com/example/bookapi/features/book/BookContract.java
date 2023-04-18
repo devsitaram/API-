@@ -13,19 +13,19 @@ public interface BookContract {
 
         void errorMessage(String error);
 
-        void setBook(List<BookPojo> body);
+        void setBooks(List<BookPojo> body);
 
 //        void setSearchBook(List<BookPojo> body);
     }
 
     interface Presenter {
-        void setBooks(int id);
+        void setBooks();
 
 //        void setSearchBooks(String query);
     }
 
     interface Model {
-        Call<List<BookPojo>> getBooks(int id);
+        Call<List<BookPojo>> getBooks();
 
 //        Call<List<BookPojo>> getSearchBooks(String query);
     }
