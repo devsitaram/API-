@@ -1,8 +1,10 @@
 package com.example.bookapi.features.book.helper;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public class BookPojo{
+public class BookPojo {
 
 	private List<BooksItem> books;
 

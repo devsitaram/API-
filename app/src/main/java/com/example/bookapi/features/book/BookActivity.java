@@ -41,9 +41,9 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void setBooks(List<BookPojo> body) {
+    public void setBooks(BookPojo body) {
         recyclerView = findViewById(R.id.rvBooks);
-        BookAdapter thisAdapter = new BookAdapter(BookActivity.this, body);
+        BookAdapter thisAdapter = new BookAdapter(BookActivity.this, body.getBooks());
         recyclerView.setAdapter(thisAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(BookActivity.this);
         recyclerView.setLayoutManager(layoutManager);

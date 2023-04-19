@@ -20,9 +20,9 @@ public class BookPresenter implements BookContract.Presenter {
 
     @Override
     public void setBooks() {
-        bookModel.getBooks().enqueue(new Callback<List<BookPojo>>() {
+        bookModel.getBooks().enqueue(new Callback<BookPojo>() {
             @Override
-            public void onResponse(@NonNull Call<List<BookPojo>> call, @NonNull Response<List<BookPojo>> response) {
+            public void onResponse(@NonNull Call<BookPojo> call, @NonNull Response<BookPojo> response) {
                 if (response.isSuccessful()) {
                     mView.setBooks(response.body());
                     mView.successMessage("Api call Success.");
@@ -32,7 +32,7 @@ public class BookPresenter implements BookContract.Presenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<BookPojo>> call, @NonNull Throwable throwable) {
+            public void onFailure(@NonNull Call<BookPojo> call, @NonNull Throwable throwable) {
                 throwable.printStackTrace();
                 Log.d("onFailure", "Api call BookPojo is fails: " + throwable);
             }

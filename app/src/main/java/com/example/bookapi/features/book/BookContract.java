@@ -13,7 +13,7 @@ public interface BookContract {
 
         void errorMessage(String error);
 
-        void setBooks(List<BookPojo> body);
+        void setBooks(BookPojo body);
 
 //        void setSearchBook(List<BookPojo> body);
     }
@@ -25,7 +25,7 @@ public interface BookContract {
     }
 
     interface Model {
-        Call<List<BookPojo>> getBooks();
+        Call<BookPojo> getBooks();
 
 //        Call<List<BookPojo>> getSearchBooks(String query);
     }

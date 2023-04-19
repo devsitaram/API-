@@ -1,15 +1,26 @@
 package com.example.bookapi.features.book.helper;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class BooksItem implements Serializable {
+
+	@SerializedName("date")
 	private String date;
+	@SerializedName("author")
 	private String author;
+	@SerializedName("price")
 	private int price;
+	@SerializedName("rating")
 	private int rating;
+	@SerializedName("id")
 	private String id;
+	@SerializedName("detail")
 	private String detail;
+	@SerializedName("title")
 	private String title;
+	@SerializedName("url")
 	private String url;
 
 	// getter methods
